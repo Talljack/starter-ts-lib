@@ -1,13 +1,13 @@
 {
   "name": "starter-ts-lib",
   "type": "module",
-  "version": "0.0.4",
-  "packageManager": "bun@1.1.3",
+  "version": "0.1.0",
+  "packageManager": "bun@1.1.5",
   "description": "template of typescript library",
   "author": "Talljack <yugang.cao12@gmail.com> (https://github.com/talljack)",
   "license": "MIT",
-  "homepage": "https://github.com/Talljack/starter-ts-lib#readme",
   "funding": "https://github.com/sponsors/talljack",
+  "homepage": "https://github.com/Talljack/starter-ts-lib#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Talljack/starter-ts-lib.git"
@@ -23,8 +23,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "main": "./dist/index.js",
@@ -36,8 +36,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx .",
-    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --fix .",
     "format": "prettier --cache --write .",
     "prepublishOnly": "bun run build",
     "release": "bumpp && npm publish",
@@ -47,11 +47,10 @@
     "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.14.0",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/parser": "^7.6.0",
-    "bumpp": "^9.4.0",
-    "eslint": "^8.57.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "bumpp": "^9.4.1",
+    "eslint": "^9.1.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "esno": "^4.7.0",
@@ -60,29 +59,19 @@
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.11.1",
+    "talljack-eslint-config": "^0.2.4",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
-    "vite": "^5.2.8",
-    "vitest": "^1.5.0"
+    "vite": "^5.2.10",
+    "vitest": "^1.5.2"
   },
   "simple-git-hooks": {
-    "pre-commit": "bun run lint && bun run typecheck && bun lint-staged",
+    "pre-commit": "bun run typecheck && bun lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint",
-      "prettier --write"
-    ],
-    "package.json": [
-      "prettier --write"
-    ],
-    "*.{scss,less,styl,html}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write"
+    "*": [
+      "eslint . --fix"
     ]
   }
 }
