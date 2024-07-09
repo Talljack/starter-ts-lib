@@ -57,7 +57,7 @@
     "lint-staged": "^15.2.2",
     "picocolors": "^1.0.0",
     "prettier": "^3.2.5",
-    "rimraf": "^5.0.5",
+    "rimraf": "^6.0.0",
     "simple-git-hooks": "^2.11.1",
     "talljack-eslint-config": "^0.2.4",
     "tsup": "^8.0.2",
